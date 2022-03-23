@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your drawn cards</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Your drawn cards: </h1>
+    <div data-th-if="${deck.remaining}>0" >
+        <img src="https://deckofcardsapi.com/static/img/back.png" alt="back cover" class="cover">
+    </div>
+    <h1>Remaining cards: <span data-th-text="${deck.remaining}"></span></h1>
+    <form data-th-action="${action}" method="post">
+        <input type="hidden" name="deckId" data-th-value="${deckId}">
+        <!--for task 3-->
+        <input type="hidden" name="hidden_drawn" data-th-value="${drawn}">
+
+        <!--If remaining is a number and non-zero-->
+        <span data-th-if="${deck.remaining}">
+            <select name="count" id="count">
+            <option data-th-each="i : ${#numbers.sequence(1, deck.remaining)}" data-th-value="${i}" data-th-text="${i}"></option>
+            </select>
+            <button type="submit">Draw</button>
+        </span>
+
+
+        <!--if remaining is zero-->
+        <span data-th-unless="${deck.remaining}">
+            <select name="number" id="number" style="width: 150px;">
+                <option value="zero">0</option>
+            </select>
+            <button type="submit" disabled>Draw</button>
+            <form action>
+                <input type="button" value="Go back!" onclick="history.back()">
+            </form>
+        </span>
+
+    </form>
+    <div data-th-if="${cards.size() > 0}">
+        <img data-th-each="c: ${cards}" data-th-src="${c}" class="card shadow">
+<!--        <img data-th-each="c: ${cards}" data-th-src="${c.image}">-->
+<!--        <tr data-th-each="url: ${imageUrlList}">-->
+<!--            <td>-->
+<!--                <img data-th-src="${url}" alt="">-->
+<!--            </td>-->
+<!--        </tr>-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.card {
+    width: 100px;
+    height: auto;
+    margin-right: 2vw;
+}
+
+.shadow {
+    transition-property: box-shadow;
+    transition-timing-function: linear;
+    transition-duration: 300ms;
+}
+
+.shadow:hover {
+    box-shadow: 5px 5px 5px lightgray;
+}
+
+.cover {
+    height: auto;
+    width: 150px;
+}
