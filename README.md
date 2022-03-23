@@ -6,3 +6,5 @@ The 2 endpoint of interest are:
 deck of card
 - Endpoint 2- Draw a Card, draws one or more cards from the created
 deck
+
+Checkout app here: https://deckofcardsjg.herokuapp.com/
